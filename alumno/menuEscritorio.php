@@ -69,19 +69,22 @@ require_once('./verificarPlazos.php');
           <div class="card-header"><b><h1>Sistema de Gestion Academica</h1></b></div>
           <div class="card-body">
 
-            <!-- <form name="formAcceder">
-                    <div class="form-row">
-                          <div class="form-group col-md-4">
-                            <label for="inputPerfil">Calendario Semanal</label>
-
-                            <select id="inputAnio" name="inputAnio" class="form-control" required>
-                                <option value='' selected>Seleccione A&ntilde;o</option>
-                                <option value='1' >Primero</option>
-                                <option value='2' >Segundo</option>
-                                <option value='3' >Tercero</option>
-                            </select>
-                          </div>
-                    </div> -->
+            <div class="row">
+                  <div class="col-sm-12 col-xs-12 col-md-2 col-lg-6">
+                     <img src="../public/img/img1.jpg" width="340" alt="">
+                  </div>
+                  <div class="col-sm-12 col-xs-12 col-md-2 col-lg-6">
+                     <img src="../public/img/img2.jpg" width="340" alt="">
+                  </div>
+            </div>
+            <div class="row">
+                  <div class="col-sm-12 col-xs-12 col-md-2 col-lg-6">
+                     <img src="../public/img/img3.jpg" width="340" alt="">
+                  </div>
+                  <div class="col-sm-12 col-xs-12 col-md-2 col-lg-6">
+                     <img src="../public/img/img4.jpg" width="340" alt="">
+                  </div>
+            </div>
 
 
 <?php //include_once('horarioTds.html'); ?>
@@ -90,11 +93,8 @@ require_once('./verificarPlazos.php');
 <div class="modal-footer">
 
 </div>
-</form>
 
-    <div class="alert alert-info" role="alert">
-  <b>¿Problemas con el Acceso o la generaci&oacute;n de la Contrase&ntilde;a?.</b> <br>
-</div>
+
           </div>
 
           <div class="card-footer">

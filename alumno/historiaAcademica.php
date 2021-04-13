@@ -66,7 +66,7 @@ require_once('./optionsCarrerasDelAlumno.php');
     <div class="row">
       <div class="col-lg-12">
         <div class="card bg-light mb-12">
-          <div class="card-header"><b><h1>Sistema de Gestion Academica</h1></b></div>
+          <div class="card-header"><b><h1>Historia Academica</h1></b></div>
           <div class="card-body">
                    <fieldset>
                    <legend>Carrera</legend>
@@ -98,9 +98,6 @@ require_once('./optionsCarrerasDelAlumno.php');
 
 </div>
 
-    <div class="alert alert-info" role="alert">
-  <b>¿Problemas con el Acceso o la generaci&oacute;n de la Contrase&ntilde;a?.</b> <br>
-</div>
           </div>
 
           <div class="card-footer">
