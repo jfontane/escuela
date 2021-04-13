@@ -4,6 +4,20 @@ require_once('../config/conexion.php');
 require_once('./controlAcceso.php');
 require_once('./arregloCarrerasDelAlumno.php');
 require_once('./verificarPlazos.php');
+$sql="SELECT * FROM persona WHERE dni={$_SESSION[dni]}";
+$consulta=mysqli_query($conex,$sql);
+$filas=mysqli_fetch_assoc($consulta);
+$num_rows = mysqli_num_rows($consulta);
+if ($num_rows==1) {
+  $vApellido=$filas['apellido'];
+  $vNombre=$filas['nombre'];
+  $vDni=$_SESSION['usuario'];
+  $vDomicilioCalle=$filas['domicilioCalle'];
+  $vDomicilioNumero=$filas['domicilioNumero'];
+  $vDomicilioDpto=$filas['domicilioDpto'];
+  $vTelefonoNumero=$filas['telefono'];
+  $vMail=$filas['email'];
+}
 ?>
 
 <!doctype html>
@@ -71,30 +85,70 @@ require_once('./verificarPlazos.php');
           <div class="card-body">
 
 
-            <form method="post" action="ajax/cambiarPassword.php" id="formCambiarPwd">
-                <div class="form-row">
-                     <div class="form-group col-xs-12 col-sm-4 col-md-6">
-                         <label for="inputPassword">Nueva Contraseña</label>
-                         <input type="password" id="inputPassword" name="inputPassword" class="form-control" required maxlength="16">
-                     </div>
-                    <div class="form-group col-xs-12 col-sm-4 col-md-6">
-                      <label for="inputPassword2">Repetir Contraseña</label>
-                      <input type="password" id="inputPassword2" name="inputPassword2" class="form-control" required maxlength="16">
-                    </div>
-                </div>
+            <form method="POST" action="#" name='formulario' id='formulario'>
+                <h2>DATOS DEL ALUMNO</h2>
+                      <div class="form-row">
+                           <div class="form-group col-xs-12 col-sm-4 col-md-6">
+                               <label for="vApellido">Apellido</label>
+                               <input type="text" id="vApellido" name="vApellido" maxlength="45" value="<?php echo $vApellido;?>" class="form-control" readonly>
+                           </div>
+                      </div>
+                      <div class="form-row">
+                           <div class="form-group col-xs-12 col-sm-4 col-md-6">
+                               <label for="vNombre">Nombre</label>
+                               <input type="text" id="vNombre" name="vNombre" maxlength="45" value="<?php echo $vNombre;?>" class="form-control" readonly>
+                           </div>
+                      </div>
+                      <div class="form-row">
+                           <div class="form-group col-xs-12 col-sm-4 col-md-6">
+                               <label for="vDni">DNI</label>
+                               <input type="text" id="vDni" name="vDni" maxlength="8" value="<?php echo $_SESSION['usuario'];?>" class="form-control" maxlength="16" readonly>
+                           </div>
+                      </div>
 
-              <div class="form-row">
-                  <div class="form-group col-md-1">
-                    <button type="submit" class="btn btn-primary">Aceptar</button>
-                  </div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <div class="form-group col-md-1">
-                    <button type="button" class="btn btn-danger" onclick="location.href='menuEscritorio.php'">Volver</button>
-                  </div>
-              </div>
+                        <div class="form-row">
+                             <div class="form-group col-xs-12 col-sm-4 col-md-6">
+                                 <label for="inputPassword">Calle</label>
+                                 <input type="text" id="vDomicilioCalle" name="vDomicilioCalle" value="<?php echo strtoupper($vDomicilioCalle);?>" class="form-control" required maxlength="16">
+                             </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-xs-12 col-sm-4 col-md-6">
+                              <label for="inputPassword2">Numero</label>
+                              <input type="text" id="vDomicilioNumero" name="vDomicilioNumero" value="<?php echo $vDomicilioNumero;?>" class="form-control" required maxlength="16">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-xs-12 col-sm-4 col-md-6">
+                              <label for="inputPassword2">Dpto</label>
+                              <input type="text" id="vDomicilioDpto" name="vDomicilioDpto" class="form-control" value="<?php echo $vDomicilioDpto;?>" required maxlength="16">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-xs-12 col-sm-4 col-md-6">
+                              <label for="inputPassword2">Telefono</label>
+                              <input type="text" id="vTelefonoNumero" name="vTelefonoNumero" value="<?php echo $vTelefonoNumero;?>" class="form-control" required maxlength="16">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-xs-12 col-sm-4 col-md-6">
+                              <label for="inputPassword2">Email</label>
+                              <input type="text" id="vMail" name="vMail" class="form-control" value="<?php echo $vMail;?>" required maxlength="16">
+                            </div>
+                        </div>
 
-            </div>
+                        <div class="form-row">
+                            <div class="form-group col-xs-12 col-sm-4 col-md-6">
+                              <input name="btnModificar" type="button" id="btnModificar" value="  Modificar  " onClick="modificar()" class="btn btn-success"/>&nbsp;&nbsp;
+                      			  <input name="btnAceptar" type="reset" id="btnAceptar" value="Aplicar Cambios"  onClick="validaFormModificacionDatosAlumno()"   class="btn btn-success" disabled="disabled"/>
+                            </div>
+                        </div>
+
+
+
             </form>
+
+
 
             <div id="resultado">
 

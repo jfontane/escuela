@@ -1,4 +1,5 @@
 <?php
+require_once('../config/conexion.php');
 require_once('./controlAcceso.php');
 
 $idCarrera=base64_decode($_POST['idCarrera']);
@@ -137,8 +138,8 @@ foreach ($arraytodasMateriaPorCarrera as $valor) {
           $band=true;
     }
 	if ($valor[2]>=0 && $valor[2]<=10)
-     echo "<tr id='tr_{$valor[0]}' onmouseover=\"cambiar_color_over(this)\" onmouseout=\"cambiar_color_out(this)\"><td>$valor[1]</td><td style='text-align: center;'>$valor[2]</td><td style='text-align: center;'>$valor[3]</td><td style='text-align: center;'>$valor[4]</td><td style='text-align: center;'>$valor[5]</td></tr>";
-    else if ($valor[2]==-2) echo "<tr id='tr_{$valor[0]}' onmouseover=\"cambiar_color_over(this)\" onmouseout=\"cambiar_color_out(this)\"><td>$valor[1]</td><td style='text-align: center;'>Posib.Prom.</td><td style='text-align: center;'>$valor[3]</td><td style='text-align: center;'>$valor[4]</td><td style='text-align: center;'>$valor[5]</td></tr>";
+     echo "<tr id='tr_{$valor[0]}' onmouseover=\"cambiar_color_over(this)\" onmouseout=\"cambiar_color_out(this)\"><td>".utf8_encode($valor[1])."</td><td style='text-align: center;'>$valor[2]</td><td style='text-align: center;'>$valor[3]</td><td style='text-align: center;'>$valor[4]</td><td style='text-align: center;'>$valor[5]</td></tr>";
+    else if ($valor[2]==-2) echo "<tr id='tr_{$valor[0]}' onmouseover=\"cambiar_color_over(this)\" onmouseout=\"cambiar_color_out(this)\"><td>".utf8_encode($valor[1])."</td><td style='text-align: center;'>Posib.Prom.</td><td style='text-align: center;'>$valor[3]</td><td style='text-align: center;'>$valor[4]</td><td style='text-align: center;'>$valor[5]</td></tr>";
 
 }
 echo "</table></div>";

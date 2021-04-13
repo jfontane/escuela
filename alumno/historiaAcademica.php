@@ -1,5 +1,6 @@
 <?php
 $id_url = "historia_academica";
+require_once('./config/conexion.php');
 require_once('./controlAcceso.php');
 require_once('./optionsCarrerasDelAlumno.php');
 
@@ -107,10 +108,10 @@ require_once('./optionsCarrerasDelAlumno.php');
 
               <tbody>
                 <tr>
-                  <td><a href="https://www.facebook.com/ens40marianomoreno/" rel="noreferrer" target="_blank"><img alt="" src="./public/img/facebook.png" style="width: 31px;" /></a></td>
-                  <td><a href="https://instagram.com/" rel="noreferrer" target="_blank"><img alt="" src="./public/img/Instagram.png" style="width: 31px;" /></a></td>
-                  <td><a href="https://twitter.com/" rel="noreferrer" target="_blank"><img alt="" src="./public/img/Twitter.png" style="width: 31px;" /></a></td>
-                  <td><img alt="" src="./public/img/WhatsApp.png" style="width: 31px;" />&nbsp;
+                  <td><a href="https://www.facebook.com/ens40marianomoreno/" rel="noreferrer" target="_blank"><img alt="" src="../public/img/facebook.png" style="width: 31px;" /></a></td>
+                  <td><a href="https://instagram.com/" rel="noreferrer" target="_blank"><img alt="" src="../public/img/Instagram.png" style="width: 31px;" /></a></td>
+                  <td><a href="https://twitter.com/" rel="noreferrer" target="_blank"><img alt="" src="../public/img/Twitter.png" style="width: 31px;" /></a></td>
+                  <td><img alt="" src="../public/img/WhatsApp.png" style="width: 31px;" />&nbsp;
                   <strong><span style="font-size:12px;"><a href='https://api.whatsapp.com/send?phone=5428800&text=Hola!%20Necesito%20Informacion' target='_blank'>342 7777-8800</a></span></strong></td>
                 </tr>
               </tbody>
@@ -169,16 +170,15 @@ require_once('./optionsCarrerasDelAlumno.php');
                 </footer>
 
                 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-                <script src="./public/assets/jquery/jquery-3.2.1.slim/jquery-3.2.1.min.js"></script>
-                <script src="./public/assets/popper.js/1.12.3/umd/popper.min.js"></script>
-                <script src="./public/assets/bootstrap/bootstrap-4.0.0-beta.2/js/bootstrap.min.js"></script>
+                <script src="../public/assets/jquery/jquery-3.2.1.slim/jquery-3.2.1.min.js"></script>
+                <script src="../public/assets/popper.js/1.12.3/umd/popper.min.js"></script>
+                <script src="../public/assets/bootstrap/bootstrap-4.0.0-beta.2/js/bootstrap.min.js"></script>
                 <script>
 
 $(document).ready(function(){
 
     $('#selectCarreras').change(function(){
       var idCarrera = $(this).val();
-      //alert(idCarrera);/*
       parametros = {'idCarrera':idCarrera}
       $.ajax({
         url:'ajax/generarHistoriaAcademicaPorCarrera.php',

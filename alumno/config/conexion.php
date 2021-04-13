@@ -1,6 +1,6 @@
 <?php
 $DB_HOST="localhost";
-$DB_NAME= "uiakkdaq_escuela";
+$DB_NAME= "escuela_db";
 $DB_USER= "root";
 $DB_PASS= "";
 	# conectare la base de datos

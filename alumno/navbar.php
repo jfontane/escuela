@@ -71,7 +71,7 @@ if ($id_url=='historia_academica') {
 
                               <div class="dropdown-menu custom-dropdown-menu-right" aria-labelledby="dropdownMenuLinkPerson">
                                   <a class="dropdown-item" href="cambiarPassword.php">Cambiar Contraseña</a>
-                                  <a class="dropdown-item" href="#">Datos Personales</a>
+                                  <a class="dropdown-item" href="cambiarDatosPersonales.php">Datos Personales</a>
                                   <!-- <a class="dropdown-item" href="#">Configuración</a>
                                   <a class="dropdown-item" href="#">Acerca de</a> -->
                               </div>
