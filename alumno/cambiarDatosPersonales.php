@@ -198,35 +198,7 @@ if ($num_rows==1) {
 
   <div class="clearfix"><br></div>
 
-  <footer class="footer text-muted">
-    <div class="container-fluid">
-      <div class="row">
-
-        <div class="offset-md-2 col-md-3">
-
-            </div>
-
-                    <div class="col-md-3">
-
-                      <div class="marca">
-                        <img src="https://www.santafe.gob.ar/assets/app/portal/imgs/marca-footer.png" alt="Santa Fe">
-                        <p>Atención telefónica: 0800-111-22222 </p>
-                        <p>Lunes a viernes de 8 a 18 hs </p>
-                      </div>
-
-
-                    </div>
-
-                    <div class="col-md-3">
-
-
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                </footer>
+  <?php include_once('../footer.php'); ?>
 
 
                 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -178,37 +178,7 @@ session_destroy();
 
   <div class="clearfix"><br></div>
 
-  <footer class="footer text-muted">
-    <div class="container-fluid">
-      <div class="row">
-
-        <div class="offset-md-2 col-md-3">
-
-            </div>
-
-                    <div class="col-md-3">
-
-                      <div class="marca">
-                        <img src="https://www.santafe.gob.ar/assets/app/portal/imgs/marca-footer.png" alt="Santa Fe">
-                        <p>Atención telefónica: 0800-777-0801 </p>
-                        <p>Lunes a viernes de 8 a 18 hs </p>
-                        <p><span class="cc">c</span> Atribución-CompartirIgual 2.5 Argentina</p>
-                      </div>
-
-
-                    </div>
-
-                    <div class="col-md-3">
-
-
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                </footer>
-
+<?php include_once('footer.php'); ?>
                 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
                 <script src="./public/assets/jquery/jquery-3.2.1.slim/jquery-3.2.1.min.js"></script>
                 <script src="./public/assets/popper.js/1.12.3/umd/popper.min.js"></script>
