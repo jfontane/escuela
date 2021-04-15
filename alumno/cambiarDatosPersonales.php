@@ -362,6 +362,23 @@ $(document).ready(function(){
     $('#modalEditarEmail').on('shown.bs.modal', function () {
       $('#inputEmail').val('');
     })
+
+    $( "#formModificarEmail" ).submit(function(event) {
+       event.preventDefault();
+       var parametros = $(this).serialize();
+         $.ajax({
+           type: "POST",
+           url: "ajax/alumnoEditarEmail.php",
+           data: parametros,
+           success: function(datos){
+             $('#inputEmail').val('');
+             $("#spn_email").html(datos);
+             $('#modalEditarEmail').modal('hide');
+           }
+         });
+       });
+
+
 });
 
 
