@@ -1,23 +1,10 @@
 <?php
-$id_url = "cambiar_password";
+$id_url = "cambiar_datos_personales";
 require_once('../config/conexion.php');
 require_once('./controlAcceso.php');
 require_once('./arregloCarrerasDelAlumno.php');
 require_once('./verificarPlazos.php');
-$sql="SELECT * FROM persona WHERE dni={$_SESSION[dni]}";
-$consulta=mysqli_query($conex,$sql);
-$filas=mysqli_fetch_assoc($consulta);
-$num_rows = mysqli_num_rows($consulta);
-if ($num_rows==1) {
-  $vApellido=$filas['apellido'];
-  $vNombre=$filas['nombre'];
-  $vDni=$_SESSION['usuario'];
-  $vDomicilioCalle=$filas['domicilioCalle'];
-  $vDomicilioNumero=$filas['domicilioNumero'];
-  $vDomicilioDpto=$filas['domicilioDpto'];
-  $vTelefonoNumero=$filas['telefono'];
-  $vMail=$filas['email'];
-}
+//die($_SESSION['apellido']."**");
 ?>
 
 <!doctype html>
@@ -73,8 +60,6 @@ if ($num_rows==1) {
 
       <div class="col-lg-12">
 
-
-
       </div>
     </div>
 
@@ -85,64 +70,79 @@ if ($num_rows==1) {
           <div class="card-body">
 
 
-            <form method="POST" action="#" name='formulario' id='formulario'>
                 <h2>DATOS DEL ALUMNO</h2>
-                      <div class="form-row">
-                           <div class="form-group col-xs-12 col-sm-4 col-md-6">
-                               <label for="vApellido">Apellido</label>
-                               <input type="text" id="vApellido" name="vApellido" maxlength="45" value="<?php echo $vApellido;?>" class="form-control" readonly>
+                      <div class="row">
+                           <div class="col-xs-12 col-sm-4 col-md-6">
+                               <p>Apellido:
+                               <span><?=$_SESSION['apellido'];?></span>
+                               </p>
                            </div>
                       </div>
-                      <div class="form-row">
-                           <div class="form-group col-xs-12 col-sm-4 col-md-6">
-                               <label for="vNombre">Nombre</label>
-                               <input type="text" id="vNombre" name="vNombre" maxlength="45" value="<?php echo $vNombre;?>" class="form-control" readonly>
+                      <div class="row">
+                           <div class="col-xs-12 col-sm-4 col-md-6">
+                               <p>Nombre:
+                                  <span><?=$_SESSION['nombre'];?></span>
+                               </p>
                            </div>
                       </div>
-                      <div class="form-row">
-                           <div class="form-group col-xs-12 col-sm-4 col-md-6">
-                               <label for="vDni">DNI</label>
-                               <input type="text" id="vDni" name="vDni" maxlength="8" value="<?php echo $_SESSION['usuario'];?>" class="form-control" maxlength="16" readonly>
+                      <div class="row">
+                           <div class="col-xs-12 col-sm-4 col-md-6">
+                               <p>DNI:
+                                  <span><?=$_SESSION['dni'];?></span>
+                               </p>
                            </div>
                       </div>
 
-                        <div class="form-row">
-                             <div class="form-group col-xs-12 col-sm-4 col-md-6">
-                                 <label for="inputPassword">Calle</label>
-                                 <input type="text" id="vDomicilioCalle" name="vDomicilioCalle" value="<?php echo strtoupper($vDomicilioCalle);?>" class="form-control" required maxlength="16">
-                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-xs-12 col-sm-4 col-md-6">
-                              <label for="inputPassword2">Numero</label>
-                              <input type="text" id="vDomicilioNumero" name="vDomicilioNumero" value="<?php echo $vDomicilioNumero;?>" class="form-control" required maxlength="16">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-xs-12 col-sm-4 col-md-6">
-                              <label for="inputPassword2">Dpto</label>
-                              <input type="text" id="vDomicilioDpto" name="vDomicilioDpto" class="form-control" value="<?php echo $vDomicilioDpto;?>" required maxlength="16">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-xs-12 col-sm-4 col-md-6">
-                              <label for="inputPassword2">Telefono</label>
-                              <input type="text" id="vTelefonoNumero" name="vTelefonoNumero" value="<?php echo $vTelefonoNumero;?>" class="form-control" required maxlength="16">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-xs-12 col-sm-4 col-md-6">
-                              <label for="inputPassword2">Email</label>
-                              <input type="text" id="vMail" name="vMail" class="form-control" value="<?php echo $vMail;?>" required maxlength="16">
-                            </div>
-                        </div>
+                      <div class="row">
+                           <div class="col-xs-12 col-sm-4 col-md-6">
+                               <p>Calle:
+                                  <span><?=$_SESSION['domicilioCalle'];?></span>
+                                  <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalEditarCalle"><i class="material-icons">edit</i></a>
+                               </p>
+                           </div>
+                      </div>
 
-                        <div class="form-row">
+                      <div class="row">
+                           <div class="col-xs-12 col-sm-4 col-md-6">
+                               <p>Numero:
+                                  <span><?=$_SESSION['domicilioNumero'];?></span>
+                                  <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalEditarNumero"><i class="material-icons">edit</i></a>
+                               </p>
+                           </div>
+                      </div>
+
+                      <div class="row">
+                           <div class="col-xs-12 col-sm-4 col-md-6">
+                               <p>Dpto:
+                                  <span><?=$_SESSION['domicilioDpto'];?></span>
+                                  <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalEditarDpto"><i class="material-icons">edit</i></a>
+                               </p>
+                           </div>
+                      </div>
+
+                      <div class="row">
+                           <div class="col-xs-12 col-sm-4 col-md-6">
+                               <p>Celular:
+                                  <span><?=$_SESSION['telefono'];?></span>
+                                  <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalEditarCelular"><i class="material-icons">edit</i></a>
+                               </p>
+                           </div>
+                      </div>
+
+                      <div class="row">
+                           <div class="col-xs-12 col-sm-4 col-md-6">
+                               <p>Email:
+                                  <span><?=$_SESSION['email'];?></span>
+                                  <a href="#" data-toggle="modal" data-target="#modalEditarEmail"><i class="material-icons">edit</i></a>
+                               </p>
+                           </div>
+                      </div>
+
+                      <div class="form-row">
                             <div class="form-group col-xs-12 col-sm-4 col-md-6">
-                              <input name="btnModificar" type="button" id="btnModificar" value="  Modificar  " onClick="modificar()" class="btn btn-success"/>&nbsp;&nbsp;
-                      			  <input name="btnAceptar" type="reset" id="btnAceptar" value="Aplicar Cambios"  onClick="validaFormModificacionDatosAlumno()"   class="btn btn-success" disabled="disabled"/>
+                      			  <a href='menuEscritorio.php' class="btn btn-info">Volver</a>
                             </div>
-                        </div>
+                      </div>
 
 
 
@@ -175,10 +175,7 @@ if ($num_rows==1) {
                 </tr>
               </tbody>
             </table>
-
-
           </div>
-
         </div>
 
       </div>
@@ -196,6 +193,160 @@ if ($num_rows==1) {
 
   </main>
 
+  <!-- Modal Editar Calle-->
+  <div class="modal fade" id="modalEditarCalle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="exampleModalLabel" style="font-size: 18px;">Modificar Calle</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form name="formModificarCalle" id="formModificarCalle">
+        <div class="modal-body">
+               <div class="form-row">
+                                 <div class="form-group col-md-12">
+                                     <label for="inputEmail">Calle</label>
+                                     <input type="email" class="form-control" name="inputCalle" id="inputCalle" maxlength="40" placeholder="Ingrese nuevo calle">
+                                 </div>
+              </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- END Modal -->
+
+  <!-- Modal Editar Numero-->
+  <div class="modal fade" id="modalEditarNumero" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="exampleModalLabel" style="font-size: 18px;">Modificar Numero</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form name="formModificarNumero" id="formModificarNumero">
+        <div class="modal-body">
+               <div class="form-row">
+                                 <div class="form-group col-md-12">
+                                     <label for="inputNumero">Numero</label>
+                                     <input type="email" class="form-control" name="inputNumero" id="inputNumero" maxlength="40" placeholder="Ingrese nuevo Numero">
+                                 </div>
+              </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- END Modal -->
+
+
+  <!-- Modal Editar Dpto-->
+  <div class="modal fade" id="modalEditarDpto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="exampleModalLabel" style="font-size: 18px;">Modificar Dpto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form name="formModificarDpto" id="formModificarDpto">
+        <div class="modal-body">
+               <div class="form-row">
+                                 <div class="form-group col-md-12">
+                                     <label for="inputDpto">Dpto</label>
+                                     <input type="text" class="form-control" name="inputDpto" id="inputDpto" maxlength="40" placeholder="Ingrese nuevo Dpto.">
+                                 </div>
+              </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- END Modal -->
+
+
+  <!-- Modal Editar Dpto-->
+  <div class="modal fade" id="modalEditarCelular" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="exampleModalLabel" style="font-size: 18px;">Modificar Celular</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form name="formModificarCelular" id="formModificarCelular">
+        <div class="modal-body">
+               <div class="form-row">
+                                 <div class="form-group col-md-12">
+                                     <label for="inputDpto">Celular</label>
+                                     <input type="text" class="form-control" name="inputCelular" id="inputCelular" maxlength="40" placeholder="Ingrese nuevo Celular">
+                                 </div>
+              </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- END Modal -->
+
+
+
+  <!-- Modal Editar Email-->
+  <div class="modal fade" id="modalEditarEmail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="exampleModalLabel" style="font-size: 18px;">Modificar Email</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form name="formModificarEmail" id="formModificarEmail">
+        <div class="modal-body">
+               <div class="form-row">
+                                 <div class="form-group col-md-12">
+                                     <label for="inputEmail">Email</label>
+                                     <input type="email" class="form-control" name="inputEmail" id="inputEmail" maxlength="40" placeholder="Ingrese nuevo email">
+                                 </div>
+              </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- END Modal -->
+
   <div class="clearfix"><br></div>
 
   <?php include_once('../footer.php'); ?>
@@ -208,39 +359,9 @@ if ($num_rows==1) {
                 <script>
 
 $(document).ready(function(){
-
-  $( "#formCambiarPwd" ).submit(function(event) {
-     event.preventDefault();
-     var parametros = $(this).serialize();
-     var p1 = $('#inputPassword').val();
-     var p2 = $('#inputPassword2').val();
-     if (p1==p2) {
-       $.ajax({
-         type: "POST",
-         url: "ajax/cambiarPassword.php",
-         data: parametros,
-         success: function(datos){
-              if (datos==1) {
-                  //$(location).attr('href','menuEscritorio.php');
-                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b> Existen Campos Vacios.</div>');
-              } else if (datos==2) {
-                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b> Los valores de la Contraseña no coinciden.</div>');
-              } else if (datos==3) {
-                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b> No se pudo realizar la consulta.</div>');
-              } else if (datos==100) {
-                  $("#resultado").html('<div class="alert alert-success" role="alert"><b>Atenci&oacute;n:</b> La contraseña fue modificada Exitosamente.</div>');
-                  $("#inputPassword").prop('disabled', true);
-                  $("#inputPassword2").prop('disabled', true);
-
-              }
-         }
-       });
-     } else {
-       $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b> No coincide la Contraseña y su Confirmacion.</div>');
-     };
-     });
-
-
+    $('#modalEditarEmail').on('shown.bs.modal', function () {
+      $('#inputEmail').val('');
+    })
 });
 
 

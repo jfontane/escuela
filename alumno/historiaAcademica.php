@@ -1,6 +1,6 @@
 <?php
 $id_url = "historia_academica";
-require_once('./config/conexion.php');
+require_once('../config/conexion.php');
 require_once('./controlAcceso.php');
 require_once('./optionsCarrerasDelAlumno.php');
 

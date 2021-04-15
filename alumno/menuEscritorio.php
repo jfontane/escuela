@@ -1,9 +1,24 @@
 <?php
 $id_url = "menu_escritorio";
-require_once('./config/conexion.php');
+require_once('../config/conexion.php');
 require_once('./controlAcceso.php');
 require_once('./arregloCarrerasDelAlumno.php');
 require_once('./verificarPlazos.php');
+$sql="SELECT * FROM persona WHERE dni={$_SESSION[dni]}";
+//echo $sql;die;
+$consulta=mysqli_query($conex,$sql);
+$filas=mysqli_fetch_assoc($consulta);
+$num_rows = mysqli_num_rows($consulta);
+if ($num_rows==1) {
+  $_SESSION['apellido'] = $filas['apellido'];
+  $_SESSION['nombre'] = $filas['nombre'];
+  $_SESSION['dni'] = $_SESSION['usuario'];
+  $_SESSION['domicilioCalle'] = $filas['domicilioCalle'];
+  $_SESSION['domicilioNumero'] = $filas['domicilioNumero'];
+  $_SESSION['domicilioDpto'] = $filas['domicilioDpto'];
+  $_SESSION['telefono'] = $filas['telefono'];
+  $_SESSION['email'] = $filas['email'];
+}
 ?>
 
 <!doctype html>
@@ -88,7 +103,7 @@ require_once('./verificarPlazos.php');
             </div>
 
 
-<?php //include_once('horarioTds.html'); ?>
+<?php include_once('horarioTds.html'); ?>
 
     </div>
 <div class="modal-footer">

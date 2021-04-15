@@ -1,6 +1,6 @@
 <?php
-require_once('../config/conexion.php');
-require_once('./controlAcceso.php');
+include_once('../../config/conexion.php');
+require_once('../controlAcceso.php');
 
 $idCarrera=base64_decode($_POST['idCarrera']);
 
@@ -12,7 +12,7 @@ $sqlMateriasAprobadas="SELECT b.id as idCarrera, b.descripcion as nombreCarrera,
                               a.idAlumno={$_SESSION['idAlumno']} and
                               a.estado_final='Aprobo' and b.id={$idCarrera}";
 
-//echo $sqlMateriasAprobadas;
+//echo $sqlMateriasAprobadas;die;
 $resultado=mysqli_query($conex,$sqlMateriasAprobadas);
 
 if (mysqli_num_rows($resultado)>0) {
