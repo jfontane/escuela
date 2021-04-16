@@ -16,7 +16,7 @@ if ($num_rows==1) {
   $_SESSION['domicilioCalle'] = $filas['domicilioCalle'];
   $_SESSION['domicilioNumero'] = $filas['domicilioNumero'];
   $_SESSION['domicilioDpto'] = $filas['domicilioDpto'];
-  $_SESSION['telefono'] = $filas['telefono'];
+  $_SESSION['celular'] = $filas['telefono'];
   $_SESSION['email'] = $filas['email'];
 }
 ?>

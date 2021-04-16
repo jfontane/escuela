@@ -100,4 +100,11 @@ abstract class SanitizeVars {
 
         return $float;
     }
+    public static function EMAIL($str) {
+        $matches = null;
+        if (1 === preg_match('/^[A-z0-9\\._-]+@[A-z0-9][A-z0-9-]*(\\.[A-z0-9_-]+)*\\.([A-z]{2,6})$/', $str, $matches)) {
+           return $str;
+        } else return false;
+
+    }
 }//-- end CLASS

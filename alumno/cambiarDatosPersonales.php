@@ -4,7 +4,12 @@ require_once('../config/conexion.php');
 require_once('./controlAcceso.php');
 require_once('./arregloCarrerasDelAlumno.php');
 require_once('./verificarPlazos.php');
+require_once('../lib/arrayHash.class.php');
+
+$dniHash = ArrayHash::encode(array('dni'=>$_SESSION['dni']));
 //die($_SESSION['apellido']."**");
+//echo SanitizeVars::EMAIL('jfont-an_e.llaz@ooooo.com');
+//die;
 ?>
 
 <!doctype html>
@@ -73,21 +78,21 @@ require_once('./verificarPlazos.php');
                 <h2>DATOS DEL ALUMNO</h2>
                       <div class="row">
                            <div class="col-xs-12 col-sm-4 col-md-6">
-                               <p>Apellido:
+                               <p><b>Apellido:</b>
                                <span><?=$_SESSION['apellido'];?></span>
                                </p>
                            </div>
                       </div>
                       <div class="row">
                            <div class="col-xs-12 col-sm-4 col-md-6">
-                               <p>Nombre:
+                               <p><b>Nombre:</b>
                                   <span><?=$_SESSION['nombre'];?></span>
                                </p>
                            </div>
                       </div>
                       <div class="row">
                            <div class="col-xs-12 col-sm-4 col-md-6">
-                               <p>DNI:
+                               <p><b>DNI:</b>
                                   <span><?=$_SESSION['dni'];?></span>
                                </p>
                            </div>
@@ -95,44 +100,44 @@ require_once('./verificarPlazos.php');
 
                       <div class="row">
                            <div class="col-xs-12 col-sm-4 col-md-6">
-                               <p>Calle:
-                                  <span><?=$_SESSION['domicilioCalle'];?></span>
-                                  <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalEditarCalle"><i class="material-icons">edit</i></a>
+                               <p><b>Calle:</b>
+                                  <span id="spn_calle"><?=$_SESSION['domicilioCalle'];?></span>
+                                  <a href="#" data-toggle="modal" data-target="#modalEditarCalle"><i class="material-icons">edit</i></a>
                                </p>
                            </div>
                       </div>
 
                       <div class="row">
                            <div class="col-xs-12 col-sm-4 col-md-6">
-                               <p>Numero:
-                                  <span><?=$_SESSION['domicilioNumero'];?></span>
-                                  <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalEditarNumero"><i class="material-icons">edit</i></a>
+                               <p><b>Numero:</b>
+                                  <span id="spn_numero"><?=$_SESSION['domicilioNumero'];?></span>
+                                  <a href="#" data-toggle="modal" data-target="#modalEditarNumero"><i class="material-icons">edit</i></a>
                                </p>
                            </div>
                       </div>
 
                       <div class="row">
                            <div class="col-xs-12 col-sm-4 col-md-6">
-                               <p>Dpto:
-                                  <span><?=$_SESSION['domicilioDpto'];?></span>
-                                  <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalEditarDpto"><i class="material-icons">edit</i></a>
+                               <p><b>Dpto:</b>
+                                  <span id="spn_dpto"><?=$_SESSION['domicilioDpto'];?></span>
+                                  <a href="#" data-toggle="modal" data-target="#modalEditarDpto"><i class="material-icons">edit</i></a>
                                </p>
                            </div>
                       </div>
 
                       <div class="row">
                            <div class="col-xs-12 col-sm-4 col-md-6">
-                               <p>Celular:
-                                  <span><?=$_SESSION['telefono'];?></span>
-                                  <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalEditarCelular"><i class="material-icons">edit</i></a>
+                               <p><b>Celular:</b>
+                                  <span id="spn_celular"><?=$_SESSION['celular'];?></span>
+                                  <a href="#" data-toggle="modal" data-target="#modalEditarCelular"><i class="material-icons">edit</i></a>
                                </p>
                            </div>
                       </div>
 
                       <div class="row">
                            <div class="col-xs-12 col-sm-4 col-md-6">
-                               <p>Email:
-                                  <span><?=$_SESSION['email'];?></span>
+                               <p><b>Email:</b>
+                                  <span id="spn_email"><?=$_SESSION['email'];?></span>
                                   <a href="#" data-toggle="modal" data-target="#modalEditarEmail"><i class="material-icons">edit</i></a>
                                </p>
                            </div>
@@ -143,12 +148,7 @@ require_once('./verificarPlazos.php');
                       			  <a href='menuEscritorio.php' class="btn btn-info">Volver</a>
                             </div>
                       </div>
-
-
-
             </form>
-
-
 
             <div id="resultado">
 
@@ -162,9 +162,8 @@ require_once('./verificarPlazos.php');
 
           <div class="card-footer">
 
-            <h3 align='left'>Redes Sociales</h3>
+          <h3 align='left'>Redes Sociales</h3>
             <table border="0" cellpadding="1" cellspacing="1" style="width:250px;">
-
               <tbody>
                 <tr>
                   <td><a href="https://www.facebook.com/ens40marianomoreno/" rel="noreferrer" target="_blank"><img alt="" src="../public/img/facebook.png" style="width: 31px;" /></a></td>
@@ -208,7 +207,8 @@ require_once('./verificarPlazos.php');
                <div class="form-row">
                                  <div class="form-group col-md-12">
                                      <label for="inputEmail">Calle</label>
-                                     <input type="email" class="form-control" name="inputCalle" id="inputCalle" maxlength="40" placeholder="Ingrese nuevo calle">
+                                     <input type="text" class="form-control" name="inputCalle" id="inputCalle" maxlength="40" placeholder="Ingrese nuevo calle">
+                                     <input type="hidden" class="form-control" name="inputHash" id="inputHash" maxlength="100" value="<?=$dniHash?>">
                                  </div>
               </div>
 
@@ -228,7 +228,7 @@ require_once('./verificarPlazos.php');
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 id="exampleModalLabel" style="font-size: 18px;">Modificar Numero</h5>
+          <h5 id="exampleModalLabel" style="font-size: 18px;">Modificar Numero del Domicilio</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -237,8 +237,9 @@ require_once('./verificarPlazos.php');
         <div class="modal-body">
                <div class="form-row">
                                  <div class="form-group col-md-12">
-                                     <label for="inputNumero">Numero</label>
-                                     <input type="email" class="form-control" name="inputNumero" id="inputNumero" maxlength="40" placeholder="Ingrese nuevo Numero">
+                                     <label for="inputNumero">Calle Numero</label>
+                                     <input type="text" class="form-control" name="inputNumero" id="inputNumero" maxlength="40" placeholder="Ingrese nuevo Numero">
+                                     <input type="hidden" class="form-control" name="inputHash" id="inputHash" maxlength="100" value="<?=$dniHash?>">
                                  </div>
               </div>
 
@@ -270,6 +271,7 @@ require_once('./verificarPlazos.php');
                                  <div class="form-group col-md-12">
                                      <label for="inputDpto">Dpto</label>
                                      <input type="text" class="form-control" name="inputDpto" id="inputDpto" maxlength="40" placeholder="Ingrese nuevo Dpto.">
+                                     <input type="hidden" class="form-control" name="inputHash" id="inputHash" maxlength="100" value="<?=$dniHash?>">
                                  </div>
               </div>
 
@@ -285,7 +287,7 @@ require_once('./verificarPlazos.php');
   <!-- END Modal -->
 
 
-  <!-- Modal Editar Dpto-->
+  <!-- Modal Editar Celular-->
   <div class="modal fade" id="modalEditarCelular" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -299,8 +301,9 @@ require_once('./verificarPlazos.php');
         <div class="modal-body">
                <div class="form-row">
                                  <div class="form-group col-md-12">
-                                     <label for="inputDpto">Celular</label>
-                                     <input type="text" class="form-control" name="inputCelular" id="inputCelular" maxlength="40" placeholder="Ingrese nuevo Celular">
+                                     <label for="inputDpto"><b>Celular</b>&nbsp;<font color="red">(Sin el 0 del código de área, y Sin el 15 del número)</font></label>
+                                     <input type="text" class="form-control" name="inputCelular" id="inputCelular" maxlength="40" placeholder="Ingrese Celular">
+                                     <input type="hidden" class="form-control" name="inputHash" id="inputHash" maxlength="100" value="<?=$dniHash?>">
                                  </div>
               </div>
 
@@ -331,8 +334,9 @@ require_once('./verificarPlazos.php');
         <div class="modal-body">
                <div class="form-row">
                                  <div class="form-group col-md-12">
-                                     <label for="inputEmail">Email</label>
+                                     <label for="inputEmail"><b>Email</b></label>
                                      <input type="email" class="form-control" name="inputEmail" id="inputEmail" maxlength="40" placeholder="Ingrese nuevo email">
+                                     <input type="hidden" class="form-control" name="inputHash" id="inputHash" maxlength="100" value="<?=$dniHash?>">
                                  </div>
               </div>
 
@@ -359,21 +363,214 @@ require_once('./verificarPlazos.php');
                 <script>
 
 $(document).ready(function(){
+    $('#modalEditarCalle').on('shown.bs.modal', function () {
+      $('#inputCalle').val('');
+    })
+
+    $('#modalEditarNumero').on('shown.bs.modal', function () {
+      $('#inputNumero').val('');
+    })
+
+    $('#modalEditarDpto').on('shown.bs.modal', function () {
+      $('#inputDpto').val('');
+    })
+
+    $('#modalEditarCelular').on('shown.bs.modal', function () {
+      $('#inputCelular').val('');
+    })
+
     $('#modalEditarEmail').on('shown.bs.modal', function () {
       $('#inputEmail').val('');
     })
 
-    $( "#formModificarEmail" ).submit(function(event) {
+    $("#formModificarCalle").submit(function(event) {
        event.preventDefault();
-       var parametros = $(this).serialize();
+       calle = $('#inputCalle').val();
+       hash = $('#inputHash').val();
+
+       var parametros = {'inputCalle':calle,'inputHash':hash};
+         $.ajax({
+           type: "POST",
+           url: "ajax/alumnoEditarCalle.php",
+           data: parametros,
+           dataType: "json",
+           success: function(datos){
+               $('#inputCalle').val('');
+               $('#modalEditarCalle').modal('hide');
+               var estado = "";
+               var data = "";
+               $.each(datos, function(i, item) {
+                   //console.log(i);
+                   if (i=='estado') estado = item;
+                   else if (i=='data') data = item;
+               });
+               console.log(estado+'*'+data)
+
+               if (estado==1) {
+                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'.</div>');
+               } else if (estado==2) {
+                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'</div>');
+               } else if (estado==3) {
+                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'</div>');
+               } else if (estado==100) {
+                  $("#spn_calle").html(data);
+                  $("#resultado").html('<div class="alert alert-success" role="alert"><b>Atenci&oacute;n:</b> El Email fue <i class="material-icons">edit</i> modificado con &Eacute;xito.</div>');
+               };
+           }
+         });
+       });
+
+
+    $("#formModificarNumero").submit(function(event) {
+       event.preventDefault();
+       numero = $('#inputNumero').val();
+       hash = $('#inputHash').val();
+
+       var parametros = {'inputNumero':numero,'inputHash':hash};
+         $.ajax({
+           type: "POST",
+           url: "ajax/alumnoEditarNumero.php",
+           data: parametros,
+           dataType: "json",
+           success: function(datos){
+               $('#inputNumero').val('');
+               $('#modalEditarNumero').modal('hide');
+               var estado = "";
+               var data = "";
+               $.each(datos, function(i, item) {
+                   //console.log(i);
+                   if (i=='estado') estado = item;
+                   else if (i=='data') data = item;
+               });
+               console.log(estado+'*'+data)
+
+               if (estado==1) {
+                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'.</div>');
+               } else if (estado==2) {
+                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'</div>');
+               } else if (estado==3) {
+                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'</div>');
+               } else if (estado==100) {
+                  $("#spn_numero").html(data);
+                  $("#resultado").html('<div class="alert alert-success" role="alert"><b>Atenci&oacute;n:</b> El Email fue <i class="material-icons">edit</i> modificado con &Eacute;xito.</div>');
+               };
+           }
+         });
+       });
+
+
+    $("#formModificarDpto").submit(function(event) {
+       event.preventDefault();
+       dpto = $('#inputDpto').val();
+       hash = $('#inputHash').val();
+
+       var parametros = {'inputDpto':dpto,'inputHash':hash};
+       //console.log(parametros);
+         $.ajax({
+           type: "POST",
+           url: "ajax/alumnoEditarDpto.php",
+           data: parametros,
+           dataType: "json",
+           success: function(datos){
+               $('#inputDpto').val('');
+               $('#modalEditarDpto').modal('hide');
+               var estado = "";
+               var data = "";
+               $.each(datos, function(i, item) {
+                   //console.log(i);
+                   if (i=='estado') estado = item;
+                   else if (i=='data') data = item;
+               });
+               console.log(estado+'*'+data)
+
+               if (estado==1) {
+                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'.</div>');
+               } else if (estado==2) {
+                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'</div>');
+               } else if (estado==3) {
+                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'</div>');
+               } else if (estado==100) {
+                  $("#spn_dpto").html(data);
+                  $("#resultado").html('<div class="alert alert-success" role="alert"><b>Atenci&oacute;n:</b> El Email fue <i class="material-icons">edit</i> modificado con &Eacute;xito.</div>');
+               };
+           }
+         });
+       });
+
+
+    $("#formModificarCelular").submit(function(event) {
+       event.preventDefault();
+       celular = $('#inputCelular').val();
+       hash = $('#inputHash').val();
+
+       var parametros = {'inputCelular':celular,'inputHash':hash};
+       //console.log(parametros);
+         $.ajax({
+           type: "POST",
+           url: "ajax/alumnoEditarCelular.php",
+           data: parametros,
+           dataType: "json",
+           success: function(datos){
+             $('#inputCelular').val('');
+             $('#modalEditarCelular').modal('hide');
+               var estado = "";
+               var data = "";
+               $.each(datos, function(i, item) {
+                   //console.log(i);
+                   if (i=='estado') estado = item;
+                   else if (i=='data') data = item;
+               });
+               console.log(estado+'*'+data)
+
+               if (estado==1) {
+                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'.</div>');
+               } else if (estado==2) {
+                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'</div>');
+               } else if (estado==3) {
+                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'</div>');
+               } else if (estado==100) {
+                  $("#spn_celular").html(data);
+                  $("#resultado").html('<div class="alert alert-success" role="alert"><b>Atenci&oacute;n:</b> El Email fue <i class="material-icons">edit</i> modificado con &Eacute;xito.</div>');
+               };
+           }
+         });
+       });
+
+
+    $("#formModificarEmail").submit(function(event) {
+       event.preventDefault();
+       email = $('#inputEmail').val();
+       hash = $('#inputHash').val();
+
+       var parametros = {'inputEmail':email,'inputHash':hash};
+       //console.log(parametros);
          $.ajax({
            type: "POST",
            url: "ajax/alumnoEditarEmail.php",
            data: parametros,
+           dataType: "json",
            success: function(datos){
              $('#inputEmail').val('');
-             $("#spn_email").html(datos);
              $('#modalEditarEmail').modal('hide');
+               var estado = "";
+               var data = "";
+               $.each(datos, function(i, item) {
+                   //console.log(i);
+                   if (i=='estado') estado = item;
+                   else if (i=='data') data = item;
+               });
+               console.log(estado+'*'+data)
+
+               if (estado==1) {
+                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'.</div>');
+               } else if (estado==2) {
+                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'</div>');
+               } else if (estado==3) {
+                  $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'</div>');
+               } else if (estado==100) {
+                  $("#spn_email").html(data);
+                  $("#resultado").html('<div class="alert alert-success" role="alert"><b>Atenci&oacute;n:</b> El Email fue <i class="material-icons">edit</i> modificado con &Eacute;xito.</div>');
+               };
            }
          });
        });

@@ -12,28 +12,27 @@ require_once('../../lib/arrayHash.class.php');
 
 $response = array();
 
-$email = (isset($_POST['inputEmail'])&& $_POST['inputEmail']!=NULL)?SanitizeVars::EMAIL($_POST['inputEmail']):false;
+$celular = (isset($_POST['inputCelular'])&& $_POST['inputCelular']!=NULL)?$_POST['inputCelular']:false;
 $hash = isset($_POST['inputHash'])?SanitizeVars::STRING($_POST['inputHash']):false;
-
-if($email){
+if($celular){
     if(!$hash || !ArrayHash::check($hash, array('dni'=>$_SESSION['dni']))){
       $response['estado'] = 1;
       $response['data'] = 'Faltan parametros obligatorios o son Incorrectos.';
     } else {
-      $sql = "UPDATE persona SET email='".$email."' WHERE dni='".$_SESSION['dni']."'";
+      $sql = "UPDATE persona SET telefono='".$celular."' WHERE dni='".$_SESSION['dni']."'";
       $resultado=mysqli_query($conex,$sql);
       if ($resultado) {
-            $_SESSION['email'] = $email;
+            $_SESSION['celular'] = $celular;
             $response['estado'] = 100;
-            $response['data'] = $email;
+            $response['data'] = $celular;
       } else {
-            $response['estado'] = 2;
-            $response['data'] = 'Hubo un error en la BD.';
+        $response['estado'] = 2;
+        $response['data'] = 'Hubo un error en la BD.';
       };
     };
 } else {
-    $response['estado'] = 3;
-    $response['data'] = 'El Email es Invalido.';
+  $response['estado'] = 3;
+  $response['data'] = 'El Celular es Invalido.';
 };
 
 echo json_encode($response);
