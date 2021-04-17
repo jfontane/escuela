@@ -400,11 +400,9 @@ $(document).ready(function(){
                var estado = "";
                var data = "";
                $.each(datos, function(i, item) {
-                   //console.log(i);
                    if (i=='estado') estado = item;
                    else if (i=='data') data = item;
                });
-               console.log(estado+'*'+data)
 
                if (estado==1) {
                   $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'.</div>');
@@ -414,7 +412,7 @@ $(document).ready(function(){
                   $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'</div>');
                } else if (estado==100) {
                   $("#spn_calle").html(data);
-                  $("#resultado").html('<div class="alert alert-success" role="alert"><b>Atenci&oacute;n:</b> El Email fue <i class="material-icons">edit</i> modificado con &Eacute;xito.</div>');
+                  $("#resultado").html('<div class="alert alert-success" role="alert"><b>Atenci&oacute;n:</b> La calle del domicilio fue <i class="material-icons">edit</i> modificado con &Eacute;xito.</div>');
                };
            }
          });
@@ -438,11 +436,9 @@ $(document).ready(function(){
                var estado = "";
                var data = "";
                $.each(datos, function(i, item) {
-                   //console.log(i);
                    if (i=='estado') estado = item;
                    else if (i=='data') data = item;
                });
-               console.log(estado+'*'+data)
 
                if (estado==1) {
                   $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'.</div>');
@@ -452,7 +448,7 @@ $(document).ready(function(){
                   $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'</div>');
                } else if (estado==100) {
                   $("#spn_numero").html(data);
-                  $("#resultado").html('<div class="alert alert-success" role="alert"><b>Atenci&oacute;n:</b> El Email fue <i class="material-icons">edit</i> modificado con &Eacute;xito.</div>');
+                  $("#resultado").html('<div class="alert alert-success" role="alert"><b>Atenci&oacute;n:</b> El Numero de domicilio fue <i class="material-icons">edit</i> modificado con &Eacute;xito.</div>');
                };
            }
          });
@@ -465,7 +461,6 @@ $(document).ready(function(){
        hash = $('#inputHash').val();
 
        var parametros = {'inputDpto':dpto,'inputHash':hash};
-       //console.log(parametros);
          $.ajax({
            type: "POST",
            url: "ajax/alumnoEditarDpto.php",
@@ -477,11 +472,9 @@ $(document).ready(function(){
                var estado = "";
                var data = "";
                $.each(datos, function(i, item) {
-                   //console.log(i);
                    if (i=='estado') estado = item;
                    else if (i=='data') data = item;
                });
-               console.log(estado+'*'+data)
 
                if (estado==1) {
                   $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'.</div>');
@@ -491,7 +484,7 @@ $(document).ready(function(){
                   $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'</div>');
                } else if (estado==100) {
                   $("#spn_dpto").html(data);
-                  $("#resultado").html('<div class="alert alert-success" role="alert"><b>Atenci&oacute;n:</b> El Email fue <i class="material-icons">edit</i> modificado con &Eacute;xito.</div>');
+                  $("#resultado").html('<div class="alert alert-success" role="alert"><b>Atenci&oacute;n:</b> El Dpto. fue <i class="material-icons">edit</i> modificado con &Eacute;xito.</div>');
                };
            }
          });
@@ -516,11 +509,9 @@ $(document).ready(function(){
                var estado = "";
                var data = "";
                $.each(datos, function(i, item) {
-                   //console.log(i);
                    if (i=='estado') estado = item;
                    else if (i=='data') data = item;
                });
-               console.log(estado+'*'+data)
 
                if (estado==1) {
                   $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'.</div>');
@@ -530,7 +521,7 @@ $(document).ready(function(){
                   $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'</div>');
                } else if (estado==100) {
                   $("#spn_celular").html(data);
-                  $("#resultado").html('<div class="alert alert-success" role="alert"><b>Atenci&oacute;n:</b> El Email fue <i class="material-icons">edit</i> modificado con &Eacute;xito.</div>');
+                  $("#resultado").html('<div class="alert alert-success" role="alert"><b>Atenci&oacute;n:</b> El Celular fue <i class="material-icons">edit</i> modificado con &Eacute;xito.</div>');
                };
            }
          });
@@ -543,7 +534,6 @@ $(document).ready(function(){
        hash = $('#inputHash').val();
 
        var parametros = {'inputEmail':email,'inputHash':hash};
-       //console.log(parametros);
          $.ajax({
            type: "POST",
            url: "ajax/alumnoEditarEmail.php",
