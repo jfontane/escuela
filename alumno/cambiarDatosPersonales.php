@@ -335,7 +335,7 @@ $dniHash = ArrayHash::encode(array('dni'=>$_SESSION['dni']));
                <div class="form-row">
                                  <div class="form-group col-md-12">
                                      <label for="inputEmail"><b>Email</b></label>
-                                     <input type="email" class="form-control" name="inputEmail" id="inputEmail" maxlength="40" placeholder="Ingrese nuevo email">
+                                     <input type="text" class="form-control" name="inputEmail" id="inputEmail" maxlength="40" placeholder="Ingrese nuevo email">
                                      <input type="hidden" class="form-control" name="inputHash" id="inputHash" maxlength="100" value="<?=$dniHash?>">
                                  </div>
               </div>

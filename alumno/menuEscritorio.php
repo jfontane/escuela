@@ -4,7 +4,7 @@ require_once('../config/conexion.php');
 require_once('./controlAcceso.php');
 require_once('./arregloCarrerasDelAlumno.php');
 require_once('./verificarPlazos.php');
-$sql="SELECT * FROM persona WHERE dni={$_SESSION[dni]}";
+$sql="SELECT * FROM persona WHERE dni={$_SESSION['dni']}";
 //echo $sql;die;
 $consulta=mysqli_query($conex,$sql);
 $filas=mysqli_fetch_assoc($consulta);
@@ -84,7 +84,7 @@ if ($num_rows==1) {
         <div class="card bg-light mb-12">
           <div class="card-header"><b><h1>Sistema de Gestion Academica</h1></b></div>
           <div class="card-body">
-
+<!--
             <div class="row">
                   <div class="col-sm-12 col-xs-12 col-md-2 col-lg-6">
                      <img src="../public/img/img1.jpg" width="340" alt="">
@@ -101,7 +101,7 @@ if ($num_rows==1) {
                      <img src="../public/img/img4.jpg" width="340" alt="">
                   </div>
             </div>
-
+-->
 
 <?php include_once('horarioTds.html'); ?>
 
