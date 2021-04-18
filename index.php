@@ -46,6 +46,8 @@ session_destroy();
     -moz-osx-font-smoothing: grayscale;
   }
   </style>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6Ld6Y6oaAAAAAMqMNwMcdEBjkJugmHZ6Nu6Cpc5T"></script>
 </head>
 
 
@@ -89,7 +91,7 @@ session_destroy();
         <div class="card bg-light mb-12">
           <div class="card-header"><b><h1>Sistema de Gestion Academica</h1></b></div>
           <div class="card-body">
-<form name="formAcceder" id="formAcceder">
+<form name="formAcceder" id="formAcceder" action='ajax/autenticar.php'>
 <div class="modal-body">
         <div class="form-row">
               <div class="form-group col-md-4">
@@ -205,15 +207,8 @@ $(document).ready(function(){
                  });
               });
 
-});
-
-/*
-			    if (ajax.responseText==1) location.href="alumno/menuEscritorio.php";
-			    else if (ajax.responseText==2) location.href="profesor/menuEscritorio.php";
-			    else divResultado.innerHTML = "<font color='red'><b>Error:</b> El Usuario/Contrase&ntilde;a es Invalido!!!</font>";
-
-*/
-
-                </script>
+});    
+       
+            </script>
               </body>
               </html>
