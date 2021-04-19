@@ -3,7 +3,9 @@ $id_url = "menu_escritorio";
 require_once('../config/conexion.php');
 require_once('./controlAcceso.php');
 require_once('./arregloCarrerasDelAlumno.php');
+require_once('./optionsCarrerasDelAlumno.php');
 require_once('./verificarPlazos.php');
+
 $sql="SELECT * FROM persona WHERE dni={$_SESSION['dni']}";
 //echo $sql;die;
 $consulta=mysqli_query($conex,$sql);
@@ -84,6 +86,24 @@ if ($num_rows==1) {
         <div class="card bg-light mb-12">
           <div class="card-header"><b><h1>Sistema de Gestion Academica</h1></b></div>
           <div class="card-body">
+            <fieldset>
+            <legend>Carrera</legend>
+            <form id="formu">
+              <div class="form-row">
+                    <div class="form-group col-md-4">
+                           <select id='selectCarreras' name='selectCarreras' class="form-control" required>
+                            <?php
+                                   echo crearOptions();
+                             ?>
+                           </select>
+          </div>
+        </div>
+      </form>
+        </fieldset>
+
+        <div id="div_resultado">
+
+        </div>
 <!--
             <div class="row">
                   <div class="col-sm-12 col-xs-12 col-md-2 col-lg-6">
@@ -103,7 +123,7 @@ if ($num_rows==1) {
             </div>
 -->
 
-<?php include_once('horarioTds.html'); ?>
+<?php //include_once('horarioTds.html'); ?>
 
     </div>
 <div class="modal-footer">
@@ -149,15 +169,28 @@ if ($num_rows==1) {
 
   </main>
 
-  <div class="clearfix"><br></div>
+<div class="clearfix"><br></div>
 
-  <?php include_once('../footer.php'); ?>
+<?php include_once('../footer.php'); ?>
 
-                <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-                <script src="../public/assets/jquery/jquery-3.2.1.slim/jquery-3.2.1.min.js"></script>
-                <script src="../public/assets/popper.js/1.12.3/umd/popper.min.js"></script>
-                <script src="../public/assets/bootstrap/bootstrap-4.0.0-beta.2/js/bootstrap.min.js"></script>
-                <script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="../public/assets/jquery/jquery-3.2.1.slim/jquery-3.2.1.min.js"></script>
+<script src="../public/assets/popper.js/1.12.3/umd/popper.min.js"></script>
+<script src="../public/assets/bootstrap/bootstrap-4.0.0-beta.2/js/bootstrap.min.js"></script>
+<script>
+
+$(document).ready(function(){
+        $('#selectCarreras').change(function(){
+              var idCarrera = $(this).val();
+              parametros = {'idCarrera':idCarrera}
+              if (idCarrera=="MTU=") {
+                  $('#div_resultado').load('horarioTds.html');
+              } else {
+                $('#div_resultado').html("");
+              }
+        });
+});
+
 /*
 $(document).ready(function(){
      $('#is_primero').hide();

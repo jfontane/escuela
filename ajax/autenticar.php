@@ -9,7 +9,6 @@
 session_start();
 require_once('../config/conexion.php');
 require_once('../lib/sanitize.class.php');
-define("RECAPTCHA_V3_SECRET_KEY", '6Ld6Y6oaAAAAAIsgbDUIvOKDK3-auQeQeqYTHC4-');
 
 $inputUsuario = (isset($_POST['inputUsuario']) && $_POST['inputUsuario']!=NULL)?SanitizeVars::STRING($_POST['inputUsuario'],8,8):false;
 $inputPassword = (isset($_POST['inputPassword']) && $_POST['inputPassword']!=NULL)?SanitizeVars::STRING($_POST['inputPassword'],3,15):false;

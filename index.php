@@ -192,10 +192,9 @@ $('#formAcceder').submit(function(event) {
            var action = "ajax/autenticar";
            var token='1234'; // esto borrarlo despues
 
-           //grecaptcha.execute('6Ld6Y6oaAAAAAMqMNwMcdEBjkJugmHZ6Nu6Cpc5T', {action: 'ajax/autenticar'}).then(function(token) {
+           //grecaptcha.execute('', {action: 'ajax/autenticar'}).then(function(token) {
                $('#formAcceder').prepend('<input type="hidden" name="token" value="' + token + '">');
                $('#formAcceder').prepend('<input type="hidden" name="action" value="'+action+'">');
-               //$('#formAcceder').unbind('submit').submit();
                var usuario = $('#inputUsuario').val();
                var pwd = $('#inputPassword').val();
                var perfil = $('#inputPerfil').val();

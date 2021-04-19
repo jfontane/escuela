@@ -56,11 +56,7 @@ require_once('./optionsCarrerasDelAlumno.php');
   <?php include('navbar.php'); ?>
   <main role="main" class="container">
     <div class="row row-top">
-
       <div class="col-lg-12">
-
-
-
       </div>
     </div>
 
@@ -91,15 +87,11 @@ require_once('./optionsCarrerasDelAlumno.php');
       <div class="col-sm-12 col-md-12 text-left" id="div_resultado">
       </div>
 </div>
-
-
-
-    </div>
-<div class="modal-footer">
-
 </div>
+  <div class="modal-footer">
 
-          </div>
+  </div>
+</div>
 
           <div class="card-footer">
 
@@ -149,7 +141,6 @@ require_once('./optionsCarrerasDelAlumno.php');
                 <script>
 
 $(document).ready(function(){
-
     $('#selectCarreras').change(function(){
       var idCarrera = $(this).val();
       parametros = {'idCarrera':idCarrera}
@@ -161,8 +152,7 @@ $(document).ready(function(){
           $("#div_resultado").html(data).fadeIn('slow');
         }
       });
-    })
-
+    });
 });
 
 //generarHistoriaAcademicaPorCarrera.php?idCarrera="+opcionSeleccionada

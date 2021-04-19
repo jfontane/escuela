@@ -2,5 +2,6 @@
 /public/css/
 /profesor/
 /alumno_bck/
-/config/
-.gitignore
+/config/conexion.php
+/config/*
+
