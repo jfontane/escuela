@@ -66,10 +66,10 @@ session_destroy();
           <a class="nav-link" href="#"><i class="material-icons">home</i><span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" data-toggle="modal" data-target="#modalAcceder">Institucional<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="https://ens40-sfe.infd.edu.ar/" target="_blank">Institucional<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" data-toggle="modal" data-target="#modalAcceder">Campus Virtual<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="https://ens40-sfe.infd.edu.ar/aula/acceso.cgi" target="_blank">Campus Virtual<span class="sr-only">(current)</span></a>
         </li>
       </ul>
 
