@@ -52,92 +52,18 @@ session_destroy();
 
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-light fixed-top">
-    <a class="navbar-brand" href="#"><img
-      src="./public/img/logo.png" width="100"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
 
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#"><i class="material-icons">home</i><span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://ens40-sfe.infd.edu.ar/" target="_blank">Institucional<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://ens40-sfe.infd.edu.ar/aula/acceso.cgi" target="_blank">Campus Virtual<span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
-
-    </div>
-  </nav>
+  <?php include_once('navBar.php') ?>
 
   <main role="main" class="container">
     <div class="row row-top">
 
-      <div class="col-lg-12">
+      <div class="col-xs-12">
 
-
+<img src="./public/img/escuela_50_anios.png" alt="">
 
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="card bg-light mb-12">
-          <div class="card-header"><b><h1>Sistema de Gestion Academica</h1></b></div>
-          <div class="card-body">
-<form name="formAcceder" id="formAcceder" action='ajax/autenticar1.php'>
-<div class="modal-body">
-        <div class="form-row">
-              <div class="form-group col-md-4">
-                <label for="inputPerfil">Perfil</label>
-
-                <select id="inputPerfil" name="inputPerfil" class="form-control" required>
-                    <option value='' selected>Seleccione Perfil</option>
-                    <option value='2' >Profesor</option>
-                    <option value='1' >Alumno</option>
-                </select>
-              </div>
-        </div>
-
-       <div class="form-row">
-              <div class="form-group col-xs-12 col-sm-4 col-md-4">
-                    <label for="inputUsuario">Usuario</label>
-                    <input type="text" class="form-control" name="inputUsuario" id="inputUsuario" maxlength="8" placeholder="Ingrese DNI">
-              </div>
-
-      </div>
-
-      <div class="form-row">
-        <div class="form-group col-xs-12 col-sm-4 col-md-4">
-            <label for="inputPassword">Contraseña</label>
-            <input type="password" class="form-control" name="inputPassword" id="inputPassword" maxlength="10" placeholder="Ingrese Contraseña">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group col-xs-12 col-sm-4 col-md-4 ">
-          <button type="submit" class="btn btn-primary">Aceptar</button>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-xs-12 col-sm-12 col-md-12" id="resultado">
-
-        </div>
-      </div>
-
-</div>
-<div class="modal-footer">
-
-</div>
-</form>
-
-</div>
 
           <div class="card-footer">
 
@@ -158,10 +84,8 @@ session_destroy();
 
           </div>
 
-        </div>
 
-      </div>
-    </div>
+
 
 
     <div class="row">
@@ -179,57 +103,5 @@ session_destroy();
 
 <?php include_once('footer.php'); ?>
 
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="./public/assets/jquery/jquery-3.2.1.slim/jquery-3.2.1.min.js"></script>
-<script src="./public/assets/popper.js/1.12.3/umd/popper.min.js"></script>
-<script src="./public/assets/bootstrap/bootstrap-4.0.0-beta.2/js/bootstrap.min.js"></script>
-<script>
-
-$('#formAcceder').submit(function(event) {
-       event.preventDefault();
-
-       //grecaptcha.ready(function() {
-           var action = "ajax/autenticar";
-           var token='1234'; // esto borrarlo despues
-
-           //grecaptcha.execute('', {action: 'ajax/autenticar'}).then(function(token) {
-               $('#formAcceder').prepend('<input type="hidden" name="token" value="' + token + '">');
-               $('#formAcceder').prepend('<input type="hidden" name="action" value="'+action+'">');
-               var usuario = $('#inputUsuario').val();
-               var pwd = $('#inputPassword').val();
-               var perfil = $('#inputPerfil').val();
-               var parametros = {'inputUsuario':usuario,'inputPassword':pwd,'inputPerfil':perfil, 'token':token, 'action':action}
-
-               $.ajax({
-                    type: "POST",
-                    url: "ajax/autenticar.php",
-                    data: parametros,
-                    dataType: "json",
-                    success: function(datos){
-                       var estado = "";
-                       var data = "";
-                       $.each(datos, function(i, item) {
-                           if (i=='estado') estado = item;
-                           else if (i=='data') data = item;
-                       });
-
-                       if (estado==3 || estado==4 || estado==5) {
-                          $("#resultado").html('<div class="alert alert-danger" role="alert"><b>Error:</b>&nbsp;'+data+'.</div>');
-                       } else if (estado==1) {
-                          $(location).attr('href','alumno/menuEscritorio.php');
-                       } else if (estado==2) {
-                          $(location).attr('href','profesor/menuEscritorio.php');
-                       };
-
-                    }
-                 });
-
-
-           //});;
-       //});
-});
-
-
-        </script>
-    </body>
+</body>
 </html>

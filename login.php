@@ -6,11 +6,11 @@ session_destroy();
 <!doctype html>
 <html lang="en">
 <head>
-  <title>Caja Jubilaciones - Notificaciones</title>
+  <title>Escuela Normal Superior 40 - Gestion de Alumnado</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" href="https://www.santafe.gob.ar/assets/standard/images/favicon.ico">
+  <link rel="icon" href="./public/img/favicon.ico">
   <!-- css custom bootstrap theme -->
   <link rel="stylesheet" href="./public/css/custom.css" type="text/css">
   <!-- assets fonts -->
@@ -50,72 +50,90 @@ session_destroy();
 
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-light fixed-top">
-    <a class="navbar-brand" href="#"><img
-      src="https://www.santafe.gob.ar/assets/standard/images/gob-santafe.png"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" data-toggle="modal" data-target="#modalAcceder">Acceder<span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
-
-    </div>
-  </nav>
+  <?php include_once('navBar.php') ?>
 
   <main role="main" class="container">
-
-
     <div class="row row-top">
 
       <div class="col-lg-12">
-        <h1>Notificaciones Digitales</h1>
 
-        <p>Caja de Jubilaciones de la Provincia</p>
 
-        <div class="cover">
-        </div>
+
       </div>
-
     </div>
 
     <div class="row">
       <div class="col-lg-12">
         <div class="card bg-light mb-12">
-          <div class="card-header">Notificacion: </div>
-
-
+          <div class="card-header"><b><h1>Sistema de Gestion Academica</h1></b></div>
           <div class="card-body">
+<form name="formAcceder" id="formAcceder">
+<div class="modal-body">
+        <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="inputPerfil">Perfil</label>
 
-            <form id="formAcceder">
+                <select id="inputPerfil" name="inputPerfil" class="form-control" required>
+                    <option value='' selected>Seleccione Perfil</option>
+                    <option value='2' >Profesor</option>
+                    <option value='1' >Alumno</option>
+                </select>
+              </div>
+        </div>
 
+       <div class="form-row">
+              <div class="form-group col-xs-12 col-sm-4 col-md-4">
+                    <label for="inputUsuario">Usuario</label>
+                    <input type="text" class="form-control" name="inputUsuario" id="inputUsuario" placeholder="Ingrese DNI">
+              </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputEmail">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputPassword">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password">
-                    </div>
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-primary">Aceptar</button>
-                </div>
+      </div>
 
-            </form>
+      <div class="form-row">
+        <div class="form-group col-xs-12 col-sm-4 col-md-4">
+            <label for="inputPassword">Contraseña</label>
+            <input type="password" class="form-control" name="inputPassword" id="inputPassword" placeholder="Ingrese Contraseña">
+        </div>
+      </div>
 
+      <div class="form-row">
+        <div class="form-group col-xs-12 col-sm-4 col-md-4 ">
+          <button type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-xs-12 col-sm-12 col-md-12" id="resultado">
+
+        </div>
+      </div>
+
+</div>
+<div class="modal-footer">
+
+</div>
+</form>
+
+    <div class="alert alert-info" role="alert">
+  <b>¿Problemas con el Acceso o la generaci&oacute;n de la Contrase&ntilde;a?.</b> <br>
+</div>
           </div>
 
-          <div class="card-footer" id="resultado">
+          <div class="card-footer">
+
+            <h3 align='left'>Redes Sociales</h3>
+            <table border="0" cellpadding="1" cellspacing="1" style="width:250px;">
+
+              <tbody>
+                <tr>
+                  <td><a href="https://www.facebook.com/ens40marianomoreno/" rel="noreferrer" target="_blank"><img alt="" src="./public/img/facebook.png" style="width: 31px;" /></a></td>
+                  <td><a href="https://instagram.com/" rel="noreferrer" target="_blank"><img alt="" src="./public/img/Instagram.png" style="width: 31px;" /></a></td>
+                  <td><a href="https://twitter.com/" rel="noreferrer" target="_blank"><img alt="" src="./public/img/Twitter.png" style="width: 31px;" /></a></td>
+                  <td><img alt="" src="./public/img/WhatsApp.png" style="width: 31px;" />&nbsp;
+                  <strong><span style="font-size:12px;"><a href='https://api.whatsapp.com/send?phone=5428800&text=Hola!%20Necesito%20Informacion' target='_blank'>342 7777-8800</a></span></strong></td>
+                </tr>
+              </tbody>
+            </table>
+
 
           </div>
 
@@ -124,8 +142,6 @@ session_destroy();
       </div>
     </div>
 
-
-    <!-- Modal -->
 
     <div class="row">
       <div class="col-12">
@@ -145,35 +161,8 @@ session_destroy();
       <div class="row">
 
         <div class="offset-md-2 col-md-3">
-          <div class="sociales">
-            <p><a href="/index.php/web/content/view/full/117678">RSS / SUSCRIPCIÓN A NOTICIAS</a></p>
-            <ul class="list-inline footer-ul">
-              <li class="list-inline-item"><a target="_blank" href="http://www.twitter.com/GobSantaFe"><i
-                class="icon-footertwitter"></i></a></li>
-                <li class="list-inline-item"><a target="_blank" href="http://www.facebook.com/GobSantaFe"><i
-                  class="icon-footerfacebook"></i></a>
-                </li>
-                <li class="list-inline-item"><a target="_blank" href="http://gplus.to/GobSantaFe"><i
-                  class="icon-footerg"></i></a></li>
-                  <li class="list-inline-item"><a target="_blank" href="http://gobsantafe.tumblr.com/"><i
-                    class="icon-footertumblr"></i></a>
-                  </li>
-                  <li class="list-inline-item"><a target="_blank" href="http://www.youtube.com/GobSantaFe"><i
-                    class="icon-footeryoutube"></i></a></li>
-                    <li class="list-inline-item"><a target="_blank" href="http://instagram.com/gobsantafe"><i
-                      class="icon-footerinstagram"></i></a></li>
-                      <li class="list-inline-item"><a target="_blank" href="https://es.foursquare.com/gobsantafe"><i
-                        class="icon-footerfoursquare"></i></a></li>
-                        <li class="list-inline-item"><a target="_blank" href="https://storify.com/GobSantaFe"><i
-                          class="icon-footerstorify"></i></a>
-                        </li>
-                        <li class="list-inline-item"><a target="_blank"
-                          href="http://www.linkedin.com/company/gobierno-de-la-provincia-de-santa-fe"><i
-                          class="icon-footerlinkedin"></i></a></li>
-                        </ul>
-                      </div>
 
-                    </div>
+            </div>
 
                     <div class="col-md-3">
 
@@ -189,12 +178,7 @@ session_destroy();
 
                     <div class="col-md-3">
 
-                      <div class="stg-logos-contenedor">
-                        <div class="stg-logos">
-                          <a href="https://www.santafe.gob.ar/tecnologias" target="_blank"><span
-                            class="stg-logos-logo-tec-stg"></span></a>
-                          </div>
-                        </div>
+
 
                       </div>
 
@@ -207,38 +191,6 @@ session_destroy();
                 <script src="./public/assets/jquery/jquery-3.2.1.slim/jquery-3.2.1.min.js"></script>
                 <script src="./public/assets/popper.js/1.12.3/umd/popper.min.js"></script>
                 <script src="./public/assets/bootstrap/bootstrap-4.0.0-beta.2/js/bootstrap.min.js"></script>
-                <script>
-
-                $(document).ready(function(){
-
-           $('#modalAcceder').on('shown.bs.modal', function () {
-             $('#inputEmail').val('');
-             $('#inputPassword').val('');
-           })
-
-                 $( "#formAcceder" ).submit(function(event) {
-                    event.preventDefault();
-                    var parametros = $(this).serialize();
-                      $.ajax({
-                        type: "POST",
-                        url: "autenticarAdmin.php",
-                        data: parametros,
-                        success: function(datos){
-                          if (datos=='Si') {
-                              $(location).attr('href','consultaAccesosListado.php');
-                          } else {
-                              message=datos;
-                              $("#resultado").html(message);
-                          }
-                          $('#modalAcceder').modal('hide');
-                        }
-                      });
-                    });
-
-               });
-
-
-
-                </script>
+                <script src="./public/assets/custom/verify.min.js"></script>
               </body>
               </html>
