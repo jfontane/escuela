@@ -100,6 +100,9 @@ abstract class SanitizeVars {
 
         return $float;
     }
+
+    /* Developer jfontanellaz@gmail.com */
+    /* Recibe una cadena de texto y la devuelvo si son solo numeroses un email valido, sino devuelvo false*/
     public static function EMAIL($str) {
         $matches = null;
         if (1 === preg_match('/^[A-z0-9\\._-]+@[A-z0-9][A-z0-9-]*(\\.[A-z0-9_-]+)*\\.([A-z]{2,6})$/', $str, $matches)) {
@@ -107,4 +110,36 @@ abstract class SanitizeVars {
         } else return false;
 
     }
+
+    /* Developer jfontanellaz@gmail.com */
+    /* Recibe una cadena de texto y la devuelvo si son solo numeros, sino devuelvo false*/
+    public static function STRING_NUMBER($strNumber){
+       $patron = "/^[[:digit:]]+$/";
+       if (preg_match($patron, $strNumber)) {
+         return $strNumber;
+      } else return false;
+    }
+
+    /* Developer jfontanellaz@gmail.com */
+    /* Recibe una cadena de texto y la devuelvo si son solo numeros y letras, sino devuelvo false*/
+    public static function STRING_NUMBER_AND_LETTERS($strNumber){
+       $patron = "/^[a-zA-Z0-9]+$/";
+       if (preg_match($patron, $strNumber)) {
+         return $strNumber;
+      } else return false;
+    }
+
+    /* Developer jfontanellaz@gmail.com */
+    /* Recibe una cadena de texto y la devuelvo si son solo letras y espacios, sino devuelvo false*/
+    public static function STRING_AND_SPACES($strNumber){
+       $patron = "/^[a-zA-Z_ ]*$/";
+       if (preg_match($patron, $strNumber)) {
+         return $strNumber;
+      } else return false;
+    }
+
+
+
+
+
 }//-- end CLASS
